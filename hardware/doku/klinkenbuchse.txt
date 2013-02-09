@@ -1,0 +1,2 @@
+Breite: 0.65"
+Pinabstand: 0.25"

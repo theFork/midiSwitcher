@@ -1,0 +1,29 @@
+Partlist
+
+Exported from mainbrdV2.brd at 8/16/10 5:55 PM
+
+EAGLE Version 5.7.0 Copyright (c) 1988-2010 CadSoft
+
+Part      Value          Package      Library        Position (inch)       Orientation
+
+12V       22-23-2021     22-23-2021   con-molex      (0.2 2.175)           R90
+	C1                       E2,5-6       rcl            (0.7 2.175)           R0
+	C2        100n           C025-024X044 rcl            (0.7 2.475)           R0
+	C3        100n           C025-024X044 rcl            (1 2.475)             R180
+	C6        100n           C025-024X044 rcl            (2.05 1.925)          R0
+GRP_A                    ML10         con-harting-ml (1.9 2.575)           R0
+GRP_B                    ML10         con-harting-ml (0.85 0.325)          R0
+GRP_C                    ML10         con-harting-ml (3.15 2.575)          R180Q
+	IC1       MEGA16-P       DIL40        atmel          (2.05 1.475)          R0
+IC2                      78XXL        v-reg          (0.95 2.775)          R0
+IC3       74HC14N        DIL14        74xx-eu        (3.1 0.575)           R0
+ISP                      ML10         con-harting-ml (1.75 0.325)          R180
+MIDI_IN   22-23-2021     22-23-2021   con-molex      (0.2 1.425)           R90
+MIDI_THRU 22-23-2021     22-23-2021   con-molex      (3.15 0.175)          R0
+OK1       6N138          DIL08        optocoupler    (0.65 1.475)          R270
+R1        10k            0207/10      rcl            (1.9 0.875)           R90
+R2        220            M1206        rcl            (0.3 1.175)           MR180
+R3        1K             M1206        rcl            (2.375 1.425)         MR90
+R4        220            0207/12      rcl            (3.525 0.575)         MR90
+R5        220            0207/10      rcl            (2.65 0.175)          MR180
+SPECIAL                  ML10         con-harting-ml (3.5 1.475)           R270

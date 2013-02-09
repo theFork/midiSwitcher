@@ -1,0 +1,46 @@
+Partlist
+
+Exported from 5V+9V.sch at 8/1/11 3:44 PM
+
+EAGLE Version 5.10.0 Copyright (c) 1988-2010 CadSoft
+
+Part     Value          Device         Package  Library    Sheet
+
+B2       DF02S          DF02S          DFS      rectifier  1
+C1       330n           C-EUC1812K     C1812K   rcl        1
+C2       330n           C-EUC1812K     C1812K   rcl        1
+C3       1µF            C-EUC0805      C0805    rcl        1
+C4       RAD470/25      CPOL-EUE7.5-18 E7,5-18  rcl        1
+C5       1µF            C-EUC0805      C0805    rcl        1
+C6       RAD470/25      CPOL-EUE7.5-18 E7,5-18  rcl        1
+C7       100n           C-EUC0805      C0805    rcl        1
+C8       100n           C-EUC0805      C0805    rcl        1
+C9       100n           C-EUC0805      C0805    rcl        1
+C10      100n           C-EUC0805      C0805    rcl        1
+C11      1µF            C-EUC0805      C0805    rcl        1
+C12      1µF            C-EUC0805      C0805    rcl        1
+C13      1µF            C-EUC0805      C0805    rcl        1
+D1       1N4001         1N4148DO35-7   DO35-7   diode      1
+D2       1N4001         1N4148DO35-7   DO35-7   diode      1
+D3       1N4001         1N4004         DO41-10  diode      1
+D4       1N4001         1N4004         DO41-10  diode      1
+D5       1N4001         1N4004         DO41-10  diode      1
+D6       1N4001         1N4004         DO41-10  diode      1
+IC1                     78XXL          78XXL    v-reg      1
+IC2                     78XXS          78XXS    v-reg      1
+IC3                     78XXS          78XXS    v-reg      1
+IC4                     78XXS          78XXS    v-reg      1
+J1       PIN1-2         PIN1-2         62221    con-faston 1
+J2       PIN1-2         PIN1-2         62221    con-faston 1
+J3       PIN1-2         PIN1-2         62221    con-faston 1
+J4       PIN1-2         PIN1-2         62221    con-faston 1
+PE       PIN1-2         PIN1-2         62221    con-faston 1
+PE2      PIN1-2         PIN1-2         62221    con-faston 1
+TR2      ei54/18,8 115  EI54-1         EI54-1   trafo      1
+TR3                     EI38-1         EI38-1   trafo      1
+U$1      1PIN           1PIN           1PIN     pins       1
+U$2      1PIN           1PIN           1PIN     pins       1
+U$3      1PIN           1PIN           1PIN     pins       1
+U$4      1PIN           1PIN           1PIN     pins       1
+U$5      1PIN           1PIN           1PIN     pins       1
+U$6      1PIN           1PIN           1PIN     pins       1

@@ -1,0 +1,12 @@
+1x	BEL 75X100-1			0,96	0,96	// Reicht für 2 DualSwitches!
+2x	EBS 63P				0,32	0,64
+2x	SIL 7271-L 5V			1,55	3,10
+2x	BC 547B				0,04	0,08
+2x	1/4W 470			0,033	0,07
+4x	1/4W 2,2K			0,033	0,14
+1x	WSL 10G				0,08	0,08
+2x	1N 4148				0,02	0,04
+						----
+						5,11
+
+// Widerstände immer >10 Stk. bestellen!

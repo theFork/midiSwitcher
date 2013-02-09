@@ -1,0 +1,9 @@
+# EAGLE backups
+*.?#?
+
+# Target backups
+BackupFiles
+
+# software binaries and ctags
+bin
+src/tags

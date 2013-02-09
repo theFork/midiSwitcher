@@ -1,0 +1,11 @@
+GROUP-Stecker
+1	+12V
+2	GND
+3	Ta 1
+4	Sig 1
+5	Ta 2
+6	Sig 2
+7	Ta 3
+8	Sig 3
+9	Ta 4
+10	Sig 4

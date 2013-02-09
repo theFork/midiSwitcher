@@ -1,0 +1,25 @@
+PORTs : CTRL-DOG
+----------------
+
+DISPLAY:
+
+E	PD6
+RS	PD7
+R/W	PB0
+
+D0	PD5
+D1	PB7
+D2	PB7
+D3	PD4
+D4	PD3
+D5	PD2
+D6	PD1
+D7	PD0
+
+DREHIMPULSGEBER:
+
+PB2	Dreh2
+PB1	Dreh1
+PC4	Tast
+
+-> Taster gegen Masse, Pullups aktvieren!

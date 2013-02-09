@@ -1,0 +1,17 @@
+EAGLE Version 4.16r2 Copyright (c) 1988-2006 CadSoft
+
+Electrical Rule Check for /home/simon/projekte/midi/eagle/zentrale2.0/mainbrdV2.sch at 26.09.2009 17:34:36 
+
+WARNING: Sheet 1/1: POWER Pin IC1 AGND connected to GND
+WARNING: Sheet 1/1: POWER Pin IC1 AVCC connected to +5V
+WARNING: Sheet 1/1: POWER Pin IC1 AREF connected to +5V
+WARNING: Sheet 1/1: POWER Pin IC1 VCC connected to +5V
+WARNING: Sheet 1/1, Net N$4: missing Junction at (3.3 5.6)
+WARNING: Sheet 1/1, Net N$5: missing Junction at (3.3 5.4)
+WARNING: Sheet 1/1, Net N$2: missing Junction at (5.3 6.5)
+WARNING: Sheet 1/1: Nets N$6 and N$2 too close at (5.3 6.6)
+
+Board and schematic are consistent
+
+    0 errors
+    8 warnings
