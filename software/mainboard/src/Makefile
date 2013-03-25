@@ -8,7 +8,7 @@ MCU = atmega16
 F_OSC = 1000000
 F_CPU = 1000000
 
-# optimization level, can be [0, 1, 2, 3, s]. 
+# optimization level, can be [0, 1, 2, 3, s].
 # 0 = turn off optimization. s = optimize for size.
 OPT = s
 
@@ -100,7 +100,7 @@ help:
 	@echo "AND:"
 	@echo "Be careful with fuse bits!"
 	@echo "#------------------------------------------------------------------------------#"
-	
+
 
 # say hello.
 hello:
@@ -117,7 +117,7 @@ bye:
 $(DIR)%.o: %.c
 	$(info )
 	$(info $(MSG_COMPILING) $<)
-	$(CC) -c $(CFLAGS) $< -o $@ 
+	$(CC) -c $(CFLAGS) $< -o $@
 
 # link: create ELF output file from object files.
 OBJ = $(addprefix $(DIR),$(patsubst %.c,%.o,$(SRC)))
@@ -153,13 +153,13 @@ makeclean:
 # target: build project
 build: hello hex bye
 
-# target: program the device.  
+# target: program the device.
 program: hello makeprogram bye
 makeprogram:
 	$(info )
 	$(info $(MSG_PROGRAMING))
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_VERIFY_FLASH)
-	
+
 # target: set fuse bits.
 fuse: hello makefuse bye
 makefuse:
