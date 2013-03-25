@@ -61,7 +61,7 @@ CC = avr-gcc
 OBJCOPY = avr-objcopy
 AVRDUDE = avrdude
 REMOVE = rm -f
-MKDIR = mkdir
+MKDIR = mkdir -p
 
 # define Messages
 MSG_ASSEMBLING = make: *** assembling...
@@ -101,10 +101,11 @@ help:
 	@echo "#------------------------------------------------------------------------------#"
 
 
-# say hello.
+# say hello and create output directory if it does not exist.
 hello:
 	$(info )
 	$(info $(MSG_HELLO))
+	$(MKDIR) $(DIR)
 
 # say bye.
 bye:
