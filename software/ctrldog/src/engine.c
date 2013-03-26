@@ -284,7 +284,7 @@ void menu( void )
 				item = MENU_DEFAULT;
 				display( menu_label[item] );
 				break;
-			
+
 			default:
 				continue;
 		}
@@ -321,10 +321,10 @@ bool prompt( char* question, uint8_t type, uint8_t pnum )
 
 void rename( void )
 {
-	#define 	HEAD_START	0x84
-	#define 	HEAD_END	0x8f
-	#define 	TAIL_START	0x44
-	#define 	TAIL_END	0x4f
+	#define	HEAD_START	0x84
+	#define	HEAD_END	0x8f
+	#define	TAIL_START	0x44
+	#define	TAIL_END	0x4f
 
 	// print current bank name
 	char label[] = "mv |            ";
@@ -356,7 +356,7 @@ void rename( void )
 					// enter edit mode
 					blinkCursor();
 					edit = 1;
-					
+
 					// display edit mode
 					moveTo( 0x80 );
 					printChar( 'e' );
@@ -375,7 +375,7 @@ void rename( void )
 					position++;
 					moveTo( position );
 				}
-				
+
 				else if ( edit && exit ) // edit-exit mode
 				{
 					// enter move-exit mode
@@ -532,7 +532,7 @@ void sendPC( uint8_t pgm )
 int8_t setInitProgram( void )
 {
 	printHead( "set init program" );
-	
+
 	// display current default program number
 	int8_t pnum = loadInitProgramNumber()+1;
 	char label[] = "     ~ 00.0";
