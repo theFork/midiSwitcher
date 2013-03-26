@@ -1,5 +1,4 @@
 # @author haggl
-# @version 0.5.3 (10): 2011-11-14
 
 # MCU name
 MCU = atmega16
@@ -70,7 +69,7 @@ MSG_BYE = make: *** have a nice day!
 MSG_CLEANING = make: *** cleaning project...
 MSG_COMPILING = make: *** compiling...
 MSG_DOWNLOADING = make: *** backing up EEPROM...
-MSG_DUMPING = make: *** dumping EEPROM...
+MSG_DUMPING = make: *** writing EEPROM...
 MSG_EEPROM = make: *** creating load file for EEPROM...
 MSG_FLASH = make: *** creating load file for Flash...
 MSG_LINKING = make: *** linking...
@@ -85,12 +84,12 @@ help:
 	@echo
 	@echo "Here are the available targets:"
 	@echo "\tmake all = clean, compile and program"
-	@echo "\tmake allinc = backup, clean, compile, program and eepdump"
+	@echo "\tmake allinc = backup, clean, compile, program and eep"
 	@echo "\tmake asm = compile the software and create .asm-file"
 	@echo "\tmake backup = read data from eeprom"
 	@echo "\tmake build = compile the software and create .hex and .asm-files"
 	@echo "\tmake clean = clean up built project files"
-	@echo "\tmake dump = write data to eeprom"
+	@echo "\tmake eep = write data to eeprom"
 	@echo "\tmake fuse = write fuse bits"
 	@echo "\tmake help = display this message"
 	@echo "\tmake hex = compile the software and create .hex-file"
@@ -176,8 +175,8 @@ makebackup:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_READ_EEPROM)
 
 # target: eeprom dump
-dump: hello makedump bye
-makedump:
+eep: hello makeeep bye
+makeeep:
 	$(info )
 	$(info $(MSG_DUMPING))
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_EEPROM)
@@ -185,11 +184,11 @@ makedump:
 # target: compile and program.
 all: hello makeclean hex makeprogram bye
 
-# target: backup, compile, program and dump.
-allinc: hello makeclean hex makebackup makeprogram makedump bye
+# target: backup, compile, program and eeprom dump.
+allinc: hello makeclean hex makebackup makeprogram makeeep bye
 
 # phony targets.
-.PHONY: all allinc asm backup build bye clean dump fuse hello hex makebackup makeclean makedump makefuse makeprogram program
+.PHONY: all allinc asm backup build bye clean eep fuse hello hex makebackup makeclean makeeep makefuse makeprogram program
 
 
 .SECONDARY: $(OBJ)
