@@ -1,5 +1,12 @@
-Balun 100Ohm balanced, 50Ohm unbalanced (0.25 EUR)::
-3x http://de.mouser.com/ProductDetail/Murata/LDB212G4010C-001/?qs=sGAEpiMZZMtMMXztyU6kdNOHRalcvD6j579H8Ei3rTA%3d
+Atmega128RFA:
 
-Chipantenne (1.26 EUR)::
-3x http://de.mouser.com/ProductDetail/Linx-Technologies/ANT-245-CHP-T/?qs=sGAEpiMZZMuBTKBKvsBmlOBg0H7cD5uyKO9Nf7FRnKk%3d
+1x 0.25
+Balun 100Ohm balanced, 50Ohm unbalanced
+http://de.mouser.com/ProductDetail/Murata/LDB212G4010C-001/?qs=sGAEpiMZZMtMMXztyU6kdNOHRalcvD6j579H8Ei3rTA%3d
+
+
+1x 1.26
+Chipantenne
+http://de.mouser.com/ProductDetail/Linx-Technologies/ANT-245-CHP-T/?qs=sGAEpiMZZMuBTKBKvsBmlOBg0H7cD5uyKO9Nf7FRnKk%3d
+
+
