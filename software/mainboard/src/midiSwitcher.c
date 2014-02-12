@@ -11,16 +11,18 @@
 /*
  * main program of the midi switcher
  * @author haggl
- * @version 1.0.1 (9): 2011-11-19
 */
 
 #include "midiSwitcher.h"
+#include "program.h"
 
 
 
 ////////////////////////////////////////////////////////////////
 //                     V A R I A B L E S                      //
 ////////////////////////////////////////////////////////////////
+
+extern program_t current_program;
 
 // main state variable struct
 exec_state_t    state;
@@ -46,9 +48,9 @@ int main( void )
         if ( pressedSW >= 0 && pressedSW <= 11 )
         {
             // update and execute the current program
-            state.config.word ^= 1<<pressedSW;
-            applyProgram();
-            updateProgram();
+            current_program.data.word ^= 1<<pressedSW;
+            updateProgram(current_program.number, current_program.data.word);
+            enterProgram(current_program.number);
         }
 
         if ( COM_ACTIVE )
@@ -63,23 +65,23 @@ int main( void )
             switch ( cmd )
             {
                 case PROG_CHANGE:
-                    loadProgram( pgm );
+                    enterProgram( pgm );
                     break;
 
                 case COPY_PROGRAM:
-                    copyProgram( pgm );
+                    copyCurrentProgramTo( pgm );
                     break;
 
                 case COPY_BANK:
-                    copyBank( pgm );
+                    copyCurrentBankTo( pgm );
                     break;
 
                 case WIPE_PROGRAM:
-                    wipeProgram();
+                    wipeCurrentProgram();
                     break;
 
                 case WIPE_BANK:
-                    wipeBank();
+                    wipeCurrentBank();
                     break;
             }
         }
@@ -103,7 +105,7 @@ ISR(USART_RXC_vect)
         state.progChange = 0;
         if ( data < 120 )
         {
-            loadProgram( data );
+            enterProgram( data );
             sendPC( data );
         }
     }

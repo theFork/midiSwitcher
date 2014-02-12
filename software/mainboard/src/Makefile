@@ -15,7 +15,7 @@ OPT = s
 TARGET = midiSwitcher
 
 # C source files (C dependencies are automatically generated.)
-SRC = $(TARGET).c engine.c interface.c com.c
+SRC = $(TARGET).c engine.c interface.c com.c program.c
 
 # output directory.
 DIR = ../bin/

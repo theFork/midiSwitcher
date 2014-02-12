@@ -1,14 +1,9 @@
 /*
  * software / hardware interface of the midi switcher
  * @author haggl
- * @version 1.0.1 (9): 2012-03-25
 */
 
 #include "midiSwitcher.h"
-
-extern exec_state_t state;
-
-uint16_t programs[120] EEMEM;
 
 void configPorts( void )
 {
@@ -32,13 +27,6 @@ void configUSART( void )
     #define UBRRLVAL (uint8_t)((F_OSC/BAUDRATE/16-1))
     UBRRH = UBRRHVAL;
     UBRRL = UBRRLVAL;
-}
-
-void applyProgram( void )
-{
-    PORTA = 0xf0 | (state.config.word & 0x00f)>>0;
-    PORTB = 0xf0 | (state.config.word & 0x0f0)>>4;
-    PORTC = 0xf0 | (state.config.word & 0xf00)>>8;
 }
 
 int8_t getButtonNumber( void )
@@ -68,21 +56,4 @@ int8_t getButtonNumber( void )
         return result;
     }
     return -1;
-}
-
-void readProgram( uint8_t num )
-{
-    state.config.word = eeprom_read_word(&programs[num]);
-}
-
-void loadProgram( uint8_t num )
-{
-    state.programNumber = num;
-    readProgram( num );
-    applyProgram();
-}
-
-void updateProgram( void )
-{
-    eeprom_write_word(&programs[state.programNumber], state.config.word);
 }

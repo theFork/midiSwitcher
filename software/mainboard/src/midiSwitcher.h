@@ -1,7 +1,6 @@
 /*
  * header for the midi switcher
  * @author haggl
- * @version 0.6.0 (7): 2011-09-02
 */
 
 #ifndef _MIDI_SWITCHER
@@ -35,41 +34,22 @@
 //---------------- data types ----------------//
 typedef uint8_t bool;
 
-// program data
-typedef union {
-    uint16_t word;
-    struct {
-        uint16_t    loopers     : 8;    // looper channels
-        uint16_t    impulses    : 2;    // impulse channels
-        uint16_t    switches    : 2;    // switch channels
-    } channels;
-} program_t;
-
 // execution state
 typedef struct
 {
-    uint8_t programNumber;
-    program_t config;
     bool progChange;
 } exec_state_t;
 
 
 //---------------- functions and procedures ----------------//
 // engine.c
-extern void copyBank( uint8_t pgm );
-extern void copyProgram( uint8_t pgm );
 extern void init( void );
 extern void sendPC( uint8_t );
-extern void wipeProgram( void );
-extern void wipeBank( void );
 
 // interface.c
 extern void configPorts( void );
-extern void execProgram( void );
+extern void configUSART( void );
 extern int8_t getButtonNumber( void );
-extern void loadConfig( uint8_t );
-extern void loadProgram( uint8_t );
-extern void storeProgram( void );
 
 
 //---------------- EOF ----------------//
