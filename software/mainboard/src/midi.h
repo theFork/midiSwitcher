@@ -1,7 +1,7 @@
 /*
  * Copyright 2012-2014 Sebastian Neuser
  *
- * This file is part of the MIDI switcher firmware.
+ * This file is part of the MIDI volume controller firmware.
  *
  * The MIDI volume controller firmware is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,51 +14,54 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with the MIDI switcher firmware.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/*
- * header for the MIDI switcher
+ * along with the MIDI volume controller firmware.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _MIDI_SWITCHER
-#define _MIDI_SWITCHER
+/*
+* midi I/O header
+*/
+
+#ifndef _MIDI_H
+#define _MIDI_H
 
 
 //---------------- includes ----------------//
+#include <avr/io.h>
 #include <avr/interrupt.h>
-#include <com.h>
 
 
-//---------------- PORT mapping ----------------//
-#define        COM_B3           7
-#define        COM_B2           5
-#define        COM_B1           3
-#define        COM_B0           1
+//---------------- constants ----------------//
+// MIDI baudrate
+#define     BAUD                31250
 
+// maximum MIDI value
+#define     MIDI_MAX_VALUE      127
 
-//---------------- COM commands ----------------//
-#define        DISPLAY_MSG      0x02
-#define        PROG_CHANGE      0x03
-#define        COPY_PROGRAM     0x04
-#define        COPY_BANK        0x05
-#define        WIPE_PROGRAM     0x06
-#define        WIPE_BANK        0x07
+// MIDI status byte
+#define     MIDI_COMMAND_MASK   0xf0
+#define     MIDI_PROGRAM_CHANGE 0xc0
+#define     MIDI_CONTROL_CHANGE 0xb0
+#define     MIDI_NOTE_ON        0x90
+
+// MIDI data byte 0 for NOTE ON commands
+#define     CMD_PITCH_SHIFTER   0x01
+#define     CMD_TAP_TEMPO       0x02
 
 
 //---------------- data types ----------------//
-// execution state
-typedef struct
-{
-    uint8_t progChange;
-} exec_state_t;
+// codes for MIDI state machine
+typedef enum {
+    IDLE,
+    NOTE_ON,
+    CONTROL_CHANGE,
+    PROGRAM_CHANGE,
+} midi_state_t;
 
 
 //---------------- functions and procedures ----------------//
-// interface.c
-void configPorts( void );
-int8_t getButtonNumber( void );
+void configureUSART( void );
 
 
 //---------------- EOF ----------------//
-#endif // _MIDI_SWITCHER
+#endif // _MIDI_H
+

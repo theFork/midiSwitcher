@@ -33,7 +33,7 @@ OPT = s
 TARGET = midiSwitcher
 
 # C source files (C dependencies are automatically generated.)
-SRC = $(TARGET).c gpio.c com.c program.c
+SRC = $(TARGET).c com.c gpio.c midi.c program.c
 
 # output directory.
 DIR = ../bin/

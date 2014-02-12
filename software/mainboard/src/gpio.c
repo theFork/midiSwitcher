@@ -42,14 +42,6 @@ void configPorts( void )
     PORTD = 0x00;    // deactivate all pull-up resistors
 }
 
-void configUSART( void )
-{
-    // USART
-    UCSRB = 0x90; // enable RXEN and EXEN_vect
-    UBRRH = UBRRHVAL;
-    UBRRL = UBRRLVAL;
-}
-
 int8_t getButtonNumber( void )
 {
     // input vector

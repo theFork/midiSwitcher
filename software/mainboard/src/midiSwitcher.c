@@ -22,18 +22,8 @@
 */
 
 #include "midiSwitcher.h"
+#include "midi.h"
 #include "program.h"
-
-
-
-////////////////////////////////////////////////////////////////
-//                     V A R I A B L E S                      //
-////////////////////////////////////////////////////////////////
-
-extern program_t current_program;
-
-// main state variable struct
-exec_state_t    state;
 
 
 
@@ -48,10 +38,7 @@ int main( void )
     configPorts();
 
     // configure in-/out- ports
-    configUSART();
-
-    // initialize variables
-    state.progChange = 0;
+    configureUSART();
 
     // fetch dummy bit to sync COM interface
     receive_com( 1 );
@@ -103,27 +90,4 @@ int main( void )
     }
 
     return 0;
-}
-
-// INTERRUPT-FUNCTIONS
-// midi package received
-ISR(USART_RXC_vect)
-{
-    // wait until transmission is complete
-    while ( !(UCSRA & 1<<RXC) );
-
-    // fetch data
-    uint8_t data = UDR;
-
-    if ( state.progChange == 1 ) // PC flag set
-    {
-        state.progChange = 0;
-        if ( data < 120 )
-        {
-            enterProgram( data );
-            transmit_com( PROG_CHANGE<<7 | data , 10 );
-        }
-    }
-    else if ( (data & 0xF0) == 0xC0 ) // in case of PC, set flag
-        state.progChange = 1;
 }
