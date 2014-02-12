@@ -3,7 +3,13 @@
  * @author haggl
 */
 
-#include "midiSwitcher.h"
+#include "gpio.h"
+
+
+
+////////////////////////////////////////////////////////////////
+//      F U N C T I O N S   A N D   P R O C E D U R E S       //
+////////////////////////////////////////////////////////////////
 
 void configPorts( void )
 {
@@ -22,9 +28,6 @@ void configUSART( void )
 {
     // USART
     UCSRB = 0x90; // enable RXEN and EXEN_vect
-    #define BAUDRATE 31250
-    #define UBRRHVAL (uint8_t)((F_OSC/BAUDRATE/16-1)>>8)
-    #define UBRRLVAL (uint8_t)((F_OSC/BAUDRATE/16-1))
     UBRRH = UBRRHVAL;
     UBRRL = UBRRLVAL;
 }
@@ -32,7 +35,6 @@ void configUSART( void )
 int8_t getButtonNumber( void )
 {
     // input vector
-    #define ACTIVEPINS ((~PINC & 0xf0)<<4) | (~PINB & 0xf0) | ((~PINA & 0xf0)>>4)
     int vector = ACTIVEPINS;
 
     if (vector)
@@ -56,4 +58,11 @@ int8_t getButtonNumber( void )
         return result;
     }
     return -1;
+}
+
+void setOutputs(uint16_t data)
+{
+    PORTA = 0xf0 | (data & 0x00f)>>0;
+    PORTB = 0xf0 | (data & 0x0f0)>>4;
+    PORTC = 0xf0 | (data & 0xf00)>>8;
 }

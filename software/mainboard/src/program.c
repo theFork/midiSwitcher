@@ -4,6 +4,7 @@
 */
 
 #include "program.h"
+#include "gpio.h"
 
 
 
@@ -26,9 +27,7 @@ uint16_t programs[120] EEMEM;
 void applyProgramData(program_data_t data)
 {
     // set outputs
-    PORTA = 0xf0 | (data.word & 0x00f)>>0;
-    PORTB = 0xf0 | (data.word & 0x0f0)>>4;
-    PORTC = 0xf0 | (data.word & 0xf00)>>8;
+    setOutputs(data.word);
 
     // clear impulse channels
     if (data.channels.impulse0 || data.channels.impulse1) {
@@ -37,9 +36,7 @@ void applyProgramData(program_data_t data)
         data.channels.impulse0 = 0;
         data.channels.impulse1 = 0;
 
-        PORTA = 0xf0 | (data.word & 0x00f)>>0;
-        PORTB = 0xf0 | (data.word & 0x0f0)>>4;
-        PORTC = 0xf0 | (data.word & 0xf00)>>8;
+        setOutputs(data.word);
     }
 }
 

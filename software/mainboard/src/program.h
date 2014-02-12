@@ -9,7 +9,6 @@
 
 //---------------- includes ----------------//
 #include <avr/eeprom.h>
-#include <stdint.h>
 #include <util/delay.h>
 
 
