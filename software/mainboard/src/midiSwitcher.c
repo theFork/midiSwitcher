@@ -45,12 +45,8 @@ int main( void )
     while ( 1 )
     {
         pressedSW = getButtonNumber();
-        if ( pressedSW >= 0 && pressedSW <= 11 )
-        {
-            // update and execute the current program
-            current_program.data.word ^= 1<<pressedSW;
-            updateProgram(current_program.number, current_program.data.word);
-            enterProgram(current_program.number);
+        if ( pressedSW >= 0 && pressedSW <= 11 ) {
+            toggleChannel(pressedSW);
         }
 
         if ( COM_ACTIVE )

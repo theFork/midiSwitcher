@@ -23,6 +23,26 @@ uint16_t programs[120] EEMEM;
 //      F U N C T I O N S   A N D   P R O C E D U R E S       //
 ////////////////////////////////////////////////////////////////
 
+void applyProgramData(program_data_t data)
+{
+    // set outputs
+    PORTA = 0xf0 | (data.word & 0x00f)>>0;
+    PORTB = 0xf0 | (data.word & 0x0f0)>>4;
+    PORTC = 0xf0 | (data.word & 0xf00)>>8;
+
+    // clear impulse channels
+    if (data.channels.impulse0 || data.channels.impulse1) {
+        _delay_ms(10);
+
+        data.channels.impulse0 = 0;
+        data.channels.impulse1 = 0;
+
+        PORTA = 0xf0 | (data.word & 0x00f)>>0;
+        PORTB = 0xf0 | (data.word & 0x0f0)>>4;
+        PORTC = 0xf0 | (data.word & 0xf00)>>8;
+    }
+}
+
 void copyCurrentProgramTo( uint8_t pgm )
 {
     // copy program
@@ -56,19 +76,60 @@ void copyCurrentBankTo( uint8_t targetBank )
 
 void enterProgram( uint8_t num )
 {
-    // load program
-    current_program.number = num;
-    current_program.data.word = readProgram( num ) ;
+    // if the program has not changed, do nothing
+    if (current_program.number == num) {
+        return;
+    }
 
-    // set outputs
-    PORTA = 0xf0 | (current_program.data.word & 0x00f)>>0;
-    PORTB = 0xf0 | (current_program.data.word & 0x0f0)>>4;
-    PORTC = 0xf0 | (current_program.data.word & 0xf00)>>8;
+    // send impulses on the impulse channels
+    if (current_program.data.channels.impulse0 || current_program.data.channels.impulse1) {
+        applyProgramData(current_program.data);
+        _delay_ms(10);
+    }
+
+    // load program and set outputs
+    current_program.number = num;
+    current_program.data.word = readProgram(num);
+    applyProgramData(current_program.data);
 }
+
 
 uint16_t readProgram( uint8_t num )
 {
     return eeprom_read_word(&programs[num]);
+}
+
+void toggleChannel(uint8_t number) {
+    // compute new program data
+    program_data_t data;
+    data.word = current_program.data.word ^ (1<<number);
+    program_data_t output = data;
+
+    // determine if there is an impulse to send
+    if (data.channels.looper0 != current_program.data.channels.looper0
+    ||  data.channels.looper1 != current_program.data.channels.looper1
+    ||  data.channels.looper2 != current_program.data.channels.looper2
+    ||  data.channels.looper3 != current_program.data.channels.looper3
+    ||  data.channels.looper4 != current_program.data.channels.looper4
+    ||  data.channels.looper5 != current_program.data.channels.looper5
+    ||  data.channels.looper6 != current_program.data.channels.looper6
+    ||  data.channels.looper7 != current_program.data.channels.looper7
+    ||  data.channels.switch0 != current_program.data.channels.switch0
+    ||  data.channels.switch1 != current_program.data.channels.switch1) {
+        output.channels.impulse0 = 0;
+        output.channels.impulse1 = 0;
+    }
+    else {
+        output.channels.impulse0 ^= current_program.data.channels.impulse0;
+        output.channels.impulse1 ^= current_program.data.channels.impulse1;
+    }
+
+    // apply the new program data
+    applyProgramData(output);
+
+    // update the current program
+    current_program.data.word = data.word;
+    updateProgram(current_program.number, current_program.data.word);
 }
 
 void updateProgram(uint8_t number, uint16_t data)
@@ -90,7 +151,7 @@ void wipeCurrentBank(void)
     for (i=0; i<10; i++) {
         updateProgram(bank+i, 0);
     }
-    
+
     // apply the changes
     enterProgram(current_program.number);
 }
