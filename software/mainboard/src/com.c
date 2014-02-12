@@ -1,7 +1,6 @@
 /*
  * 2-wire communication protocol for the midi switcher
  * @author haggl
- * @version 0.1.0 (1): 2011-09-02
 */
 
 #include "com.h"

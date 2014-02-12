@@ -1,13 +1,3 @@
-/* some useful vim commands
-:let @x='yy@"j'
-:map <C-b> :wa<CR>:!make backup<CR>
-:map <C-d> :wa<CR>:!make dump<CR>
-:map <C-m> :wa<CR>:!make clean build<CR>
-:map <C-p> :wa<CR>:!make all<CR>
-:let @c="0i//\ej"
-:let @u='02xj'
-*/
-
 /*
  * main program of the midi switcher
  * @author haggl

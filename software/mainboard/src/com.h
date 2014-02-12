@@ -1,7 +1,6 @@
 /*
  * header for the COM protocol
  * @author haggl
- * @version 0.1.0 (1): 2011-09-02
 */
 
 #ifndef COM
