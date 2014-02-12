@@ -42,10 +42,6 @@ typedef struct
 
 
 //---------------- functions and procedures ----------------//
-// engine.c
-extern void init( void );
-extern void sendPC( uint8_t );
-
 // interface.c
 extern void configPorts( void );
 extern void configUSART( void );

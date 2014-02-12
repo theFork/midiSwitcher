@@ -36,8 +36,19 @@ exec_state_t    state;
 // initialization and endless loop
 int main( void )
 {
-    // initialize and activate interrupts
-    init();
+    // configure in-/out- ports
+    configPorts();
+
+    // configure in-/out- ports
+    configUSART();
+
+    // initialize variables
+    state.progChange = 0;
+
+    // fetch dummy bit to sync COM interface
+    receive_com( 1 );
+
+    // activate interrupts
     sei();
 
     // main program
@@ -102,7 +113,7 @@ ISR(USART_RXC_vect)
         if ( data < 120 )
         {
             enterProgram( data );
-            sendPC( data );
+            transmit_com( PROG_CHANGE<<7 | data , 10 );
         }
     }
     else if ( (data & 0xF0) == 0xC0 ) // in case of PC, set flag
