@@ -39,7 +39,7 @@ void copyBank( uint8_t targetBank )
                 break;
 
             if ( source == 0 ) // bank 0 is the source
-                state.config = 0x000;
+                state.config.word = 0x000;
         }
         else loadConfig( source + i );
 
@@ -67,7 +67,7 @@ void sendPC( uint8_t pgm )
 
 void wipeProgram( void )
 {
-    state.config = 0x000;
+    state.config.word = 0x000;
     execProgram();
     storeProgram();
 }
@@ -75,7 +75,7 @@ void wipeProgram( void )
 void wipeBank( void )
 {
     // clear config
-    state.config = 0x000;
+    state.config.word = 0x000;
     execProgram();
 
     // write programs

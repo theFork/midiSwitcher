@@ -33,9 +33,9 @@ void configPorts( void )
 
 void execProgram( void )
 {
-    PORTA = 0xf0 | (state.config & 0x00f)>>0;
-    PORTB = 0xf0 | (state.config & 0x0f0)>>4;
-    PORTC = 0xf0 | (state.config & 0xf00)>>8;
+    PORTA = 0xf0 | (state.config.word & 0x00f)>>0;
+    PORTB = 0xf0 | (state.config.word & 0x0f0)>>4;
+    PORTC = 0xf0 | (state.config.word & 0xf00)>>8;
 }
 
 int8_t getButtonNumber( void )
@@ -69,7 +69,7 @@ int8_t getButtonNumber( void )
 
 void loadConfig( uint8_t num )
 {
-    state.config = eeprom_read_word(&programs[num]);
+    state.config.word = eeprom_read_word(&programs[num]);
 }
 
 void loadProgram( uint8_t num )
@@ -81,5 +81,5 @@ void loadProgram( uint8_t num )
 
 void storeProgram( void )
 {
-    eeprom_write_word(&programs[state.programNumber], state.config);
+    eeprom_write_word(&programs[state.programNumber], state.config.word);
 }

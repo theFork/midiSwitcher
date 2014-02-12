@@ -35,11 +35,21 @@
 //---------------- data types ----------------//
 typedef uint8_t bool;
 
+// program data
+typedef union {
+    uint16_t word;
+    struct {
+        uint16_t    loopers     : 8;    // looper channels
+        uint16_t    impulses    : 2;    // impulse channels
+        uint16_t    switches    : 2;    // switch channels
+    } channels;
+} program_t;
+
 // execution state
 typedef struct
 {
     uint8_t programNumber;
-    uint16_t config : 12;
+    program_t config;
     bool progChange;
 } exec_state_t;
 

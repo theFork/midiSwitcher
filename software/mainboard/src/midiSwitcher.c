@@ -46,7 +46,7 @@ int main( void )
         if ( pressedSW >= 0 && pressedSW <= 11 )
         {
             // update and execute the current program
-            state.config ^= 1<<pressedSW;
+            state.config.word ^= 1<<pressedSW;
             execProgram();
             storeProgram();
         }
