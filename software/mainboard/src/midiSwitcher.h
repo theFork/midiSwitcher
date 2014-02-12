@@ -35,12 +35,13 @@
 //---------------- data types ----------------//
 typedef uint8_t bool;
 
-volatile struct
+// execution state
+typedef struct
 {
-    uint8_t program;
+    uint8_t programNumber;
     uint16_t config : 12;
     bool progChange;
-} state;
+} exec_state_t;
 
 
 //---------------- functions and procedures ----------------//

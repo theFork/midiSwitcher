@@ -6,24 +6,26 @@
 
 #include "midiSwitcher.h"
 
+extern exec_state_t state;
+
 
 void copyProgram( uint8_t pgm )
 {
     // save current program number
-    uint8_t oldpgm = state.program;
+    uint8_t oldpgm = state.programNumber;
 
     // copy program
-    state.program = pgm;
+    state.programNumber = pgm;
     storeProgram();
 
     // reset state
-    state.program = oldpgm;
+    state.programNumber = oldpgm;
 }
 
 void copyBank( uint8_t targetBank )
 {
     // compute the addresses of source and target programs
-    uint8_t source = ( (state.program+1) / 10 ) * 10;
+    uint8_t source = ( (state.programNumber+1) / 10 ) * 10;
     targetBank *= 10;
 
     // write programs
@@ -41,7 +43,7 @@ void copyBank( uint8_t targetBank )
         }
         else loadConfig( source + i );
 
-        state.program = targetBank + i;
+        state.programNumber = targetBank + i;
         storeProgram();
     }
 }
@@ -77,11 +79,11 @@ void wipeBank( void )
     execProgram();
 
     // write programs
-    uint8_t bank = ( (state.program+1) / 10 ) * 10;
+    uint8_t bank = ( (state.programNumber+1) / 10 ) * 10;
     uint8_t i;
     for (i=0; i<10; i++)
     {
-        state.program = bank + i;
+        state.programNumber = bank + i;
         storeProgram();
     }
 }

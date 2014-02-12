@@ -17,6 +17,21 @@
 #include "midiSwitcher.h"
 
 
+
+////////////////////////////////////////////////////////////////
+//                     V A R I A B L E S                      //
+////////////////////////////////////////////////////////////////
+
+// main state variable struct
+exec_state_t    state;
+
+
+
+////////////////////////////////////////////////////////////////
+//      F U N C T I O N S   A N D   P R O C E D U R E S       //
+////////////////////////////////////////////////////////////////
+
+// initialization and endless loop
 int main( void )
 {
     // initialize and activate interrupts
@@ -24,7 +39,7 @@ int main( void )
     sei();
 
     // main program
-     int8_t pressedSW;
+    int8_t pressedSW;
     while ( 1 )
     {
         pressedSW = getButtonNumber();

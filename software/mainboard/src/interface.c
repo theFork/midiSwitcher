@@ -6,6 +6,7 @@
 
 #include "midiSwitcher.h"
 
+extern exec_state_t state;
 
 uint16_t programs[120] EEMEM;
 
@@ -73,12 +74,12 @@ void loadConfig( uint8_t num )
 
 void loadProgram( uint8_t num )
 {
-    state.program = num;
+    state.programNumber = num;
     loadConfig( num );
     execProgram();
 }
 
 void storeProgram( void )
 {
-    eeprom_write_word(&programs[state.program], state.config);
+    eeprom_write_word(&programs[state.programNumber], state.config);
 }
