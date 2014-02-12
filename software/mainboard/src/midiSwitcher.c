@@ -47,7 +47,7 @@ int main( void )
         {
             // update and execute the current program
             state.config.word ^= 1<<pressedSW;
-            execProgram();
+            applyProgram();
             storeProgram();
         }
 

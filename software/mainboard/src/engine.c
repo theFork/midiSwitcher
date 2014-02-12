@@ -68,7 +68,7 @@ void sendPC( uint8_t pgm )
 void wipeProgram( void )
 {
     state.config.word = 0x000;
-    execProgram();
+    applyProgram();
     storeProgram();
 }
 
@@ -76,7 +76,7 @@ void wipeBank( void )
 {
     // clear config
     state.config.word = 0x000;
-    execProgram();
+    applyProgram();
 
     // write programs
     uint8_t bank = ( (state.programNumber+1) / 10 ) * 10;

@@ -31,7 +31,7 @@ void configPorts( void )
     UBRRL = UBRRLVAL;
 }
 
-void execProgram( void )
+void applyProgram( void )
 {
     PORTA = 0xf0 | (state.config.word & 0x00f)>>0;
     PORTB = 0xf0 | (state.config.word & 0x0f0)>>4;
@@ -76,7 +76,7 @@ void loadProgram( uint8_t num )
 {
     state.programNumber = num;
     readProgram( num );
-    execProgram();
+    applyProgram();
 }
 
 void storeProgram( void )
