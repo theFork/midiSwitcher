@@ -30,6 +30,10 @@
 #include <util/delay.h>
 
 
+//---------------- constants ----------------//
+#define     PROGRAM_COUNT       120
+
+
 //---------------- data types ----------------//
 // program data
 typedef union {

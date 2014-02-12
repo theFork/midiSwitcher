@@ -34,7 +34,7 @@
 program_t current_program;
 
 // EEPROM program storage
-uint16_t programs[120] EEMEM;
+uint16_t programs[PROGRAM_COUNT] EEMEM;
 
 
 
