@@ -41,7 +41,7 @@ void copyBank( uint8_t targetBank )
             if ( source == 0 ) // bank 0 is the source
                 state.config.word = 0x000;
         }
-        else loadConfig( source + i );
+        else readProgram( source + i );
 
         state.programNumber = targetBank + i;
         storeProgram();

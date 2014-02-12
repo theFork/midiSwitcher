@@ -67,7 +67,7 @@ int8_t getButtonNumber( void )
     return -1;
 }
 
-void loadConfig( uint8_t num )
+void readProgram( uint8_t num )
 {
     state.config.word = eeprom_read_word(&programs[num]);
 }
@@ -75,7 +75,7 @@ void loadConfig( uint8_t num )
 void loadProgram( uint8_t num )
 {
     state.programNumber = num;
-    loadConfig( num );
+    readProgram( num );
     execProgram();
 }
 
