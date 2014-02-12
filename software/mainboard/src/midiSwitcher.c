@@ -36,10 +36,10 @@
 // initialization and endless loop
 int main( void )
 {
-    // configure in-/out- ports
-    configPorts();
+    // configure GPIO ports
+    configurePorts();
 
-    // configure in-/out- ports
+    // configure USART
     configureUSART();
 
     // fetch dummy bit to sync COM interface

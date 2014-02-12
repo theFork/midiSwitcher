@@ -32,7 +32,7 @@
 //      F U N C T I O N S   A N D   P R O C E D U R E S       //
 ////////////////////////////////////////////////////////////////
 
-void configPorts( void )
+void configurePorts( void )
 {
     // switch and relay/LED ports
     DDRA = 0x0f;    // [7:4] in; [3:0] out

@@ -41,7 +41,7 @@
 
 //---------------- functions and procedures ----------------//
 // interface.c
-void configPorts( void );
+void configurePorts( void );
 int8_t getButtonNumber( void );
 void setOutputs( uint16_t data );
 
