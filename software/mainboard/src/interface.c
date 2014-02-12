@@ -21,7 +21,10 @@ void configPorts( void )
     PORTC = 0xf0;    // activate pull-up resistors for inputs
     DDRD = 0xa0;    // [7,5] COM out, [3,1] COM in ; [0] rxd
     PORTD = 0x00;    // deactivate all pull-up resistors
+}
 
+void configUSART( void )
+{
     // USART
     UCSRB = 0x90; // enable RXEN and EXEN_vect
     #define BAUDRATE 31250

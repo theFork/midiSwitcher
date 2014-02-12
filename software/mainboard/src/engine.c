@@ -53,6 +53,9 @@ void init( void )
     // configure in-/out- ports
     configPorts();
 
+    // configure in-/out- ports
+    configUSART();
+
     // initialize variables
     state.progChange = 0;
 
