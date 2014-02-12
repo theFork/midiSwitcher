@@ -26,8 +26,7 @@
 
 
 //---------------- includes ----------------//
-#include <avr/eeprom.h>
-#include <util/delay.h>
+#include <stdint.h>
 
 
 //---------------- constants ----------------//

@@ -25,11 +25,6 @@
 #define _MIDI_H
 
 
-//---------------- includes ----------------//
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
-
 //---------------- constants ----------------//
 // MIDI baudrate
 #define     BAUD                31250

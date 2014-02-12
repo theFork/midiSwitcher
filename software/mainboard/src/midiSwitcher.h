@@ -26,8 +26,7 @@
 
 
 //---------------- includes ----------------//
-#include <avr/interrupt.h>
-#include <com.h>
+#include <stdint.h>
 
 
 //---------------- PORT mapping ----------------//

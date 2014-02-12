@@ -21,11 +21,13 @@
  * midi I/O procedures
 */
 
-#include "midiSwitcher.h"
-#include "midi.h"
 #include "com.h"
+#include "midi.h"
+#include "midiSwitcher.h"
 #include "program.h"
 
+#include <avr/interrupt.h>
+#include <avr/io.h>
 #include <util/setbaud.h>
 
 

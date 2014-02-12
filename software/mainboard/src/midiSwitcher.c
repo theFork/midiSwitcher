@@ -21,10 +21,12 @@
  * main program of the midi switcher
 */
 
-#include "midiSwitcher.h"
+#include "com.h"
 #include "midi.h"
+#include "midiSwitcher.h"
 #include "program.h"
 
+#include <avr/interrupt.h>
 
 
 ////////////////////////////////////////////////////////////////

@@ -23,6 +23,10 @@
 
 #include "com.h"
 
+#include <avr/io.h>
+#include <util/delay.h>
+
+
 uint16_t receive_com( int8_t bits )
 {
     uint16_t data = 0;
