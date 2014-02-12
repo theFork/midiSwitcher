@@ -82,7 +82,7 @@ void loadProgram( uint8_t num )
     applyProgram();
 }
 
-void storeProgram( void )
+void updateProgram( void )
 {
     eeprom_write_word(&programs[state.programNumber], state.config.word);
 }

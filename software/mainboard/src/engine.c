@@ -16,7 +16,7 @@ void copyProgram( uint8_t pgm )
 
     // copy program
     state.programNumber = pgm;
-    storeProgram();
+    updateProgram();
 
     // reset state
     state.programNumber = oldpgm;
@@ -44,7 +44,7 @@ void copyBank( uint8_t targetBank )
         else readProgram( source + i );
 
         state.programNumber = targetBank + i;
-        storeProgram();
+        updateProgram();
     }
 }
 
@@ -72,7 +72,7 @@ void wipeProgram( void )
 {
     state.config.word = 0x000;
     applyProgram();
-    storeProgram();
+    updateProgram();
 }
 
 void wipeBank( void )
@@ -87,6 +87,6 @@ void wipeBank( void )
     for (i=0; i<10; i++)
     {
         state.programNumber = bank + i;
-        storeProgram();
+        updateProgram();
     }
 }
