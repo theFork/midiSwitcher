@@ -30,8 +30,9 @@
 
 
 //---------------- constants ----------------//
-#define     PROGRAM_COUNT       120
-#define     IMPULSE_DURATION_MS 20
+#define     PROGRAM_COUNT               120
+#define     IMPULSE_DURATION_MS         20
+#define     MOMENTARY_SWITCH_CHANNEL    4
 
 
 //---------------- data types ----------------//

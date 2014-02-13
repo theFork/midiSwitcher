@@ -74,7 +74,9 @@ ISR(USART_RXC_vect)
 
     switch (midi_state) {
         case IDLE:
-            if ( (data & MIDI_COMMAND_MASK) == MIDI_NOTE_ON )
+            if ( (data & MIDI_COMMAND_MASK) == MIDI_NOTE_OFF )
+                midi_state = NOTE_OFF;
+            else if ( (data & MIDI_COMMAND_MASK) == MIDI_NOTE_ON )
                 midi_state = NOTE_ON;
             else if ( (data & MIDI_COMMAND_MASK) == MIDI_CONTROL_CHANGE )
                 midi_state = CONTROL_CHANGE;
@@ -82,15 +84,13 @@ ISR(USART_RXC_vect)
                 midi_state = PROGRAM_CHANGE;
             break;
 
+        case NOTE_OFF:
         case NOTE_ON:
-            switch (data) {
-                case CMD_TAP_TEMPO:
-                    // TODO
-                    break;
-                default:
-                    midi_state = IDLE;
-                    break;
+            if (data == CMD_MOMENTARY) {
+                // toggle switch0
+                toggleChannel(MOMENTARY_SWITCH_CHANNEL);
             }
+            midi_state = IDLE;
             break;
 
         case PROGRAM_CHANGE:
