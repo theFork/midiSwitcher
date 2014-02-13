@@ -210,3 +210,5 @@ allinc: hello makeclean hex makebackup makeprogram makeeep bye
 
 
 .SECONDARY: $(OBJ)
+
+.NOTPARALLEL:
