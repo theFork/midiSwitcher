@@ -50,12 +50,11 @@ void applyProgramData(program_data_t data)
     // set outputs
     setOutputs(data.word);
 
-    // clear impulse channels
-    if (data.channels.impulse0 || data.channels.impulse1) {
-        _delay_ms(10);
+    // clear impuls channel
+    if (data.channels.impulse) {
+        _delay_ms(IMPULSE_DURATION_MS);
 
-        data.channels.impulse0 = 0;
-        data.channels.impulse1 = 0;
+        data.channels.impulse = 0;
 
         setOutputs(data.word);
     }
@@ -99,10 +98,10 @@ void enterProgram( uint8_t num )
         return;
     }
 
-    // send impulses on the impulse channels
-    if (current_program.data.channels.impulse0 || current_program.data.channels.impulse1) {
+    // send impulse on the impulse channel
+    if (current_program.data.channels.impulse) {
         applyProgramData(current_program.data);
-        _delay_ms(10);
+        _delay_ms(IMPULSE_DURATION_MS);
     }
 
     // load program and set outputs
@@ -133,13 +132,12 @@ void toggleChannel(uint8_t number) {
     ||  data.channels.looper6 != current_program.data.channels.looper6
     ||  data.channels.looper7 != current_program.data.channels.looper7
     ||  data.channels.switch0 != current_program.data.channels.switch0
-    ||  data.channels.switch1 != current_program.data.channels.switch1) {
-        output.channels.impulse0 = 0;
-        output.channels.impulse1 = 0;
+    ||  data.channels.switch0 != current_program.data.channels.switch1
+    ||  data.channels.switch1 != current_program.data.channels.switch2) {
+        output.channels.impulse = 0;
     }
     else {
-        output.channels.impulse0 ^= current_program.data.channels.impulse0;
-        output.channels.impulse1 ^= current_program.data.channels.impulse1;
+        output.channels.impulse ^= current_program.data.channels.impulse;
     }
 
     // apply the new program data

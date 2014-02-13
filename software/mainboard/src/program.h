@@ -31,6 +31,7 @@
 
 //---------------- constants ----------------//
 #define     PROGRAM_COUNT       120
+#define     IMPULSE_DURATION_MS 20
 
 
 //---------------- data types ----------------//
@@ -42,10 +43,10 @@ typedef union {
         uint16_t    looper4     : 1;
         uint16_t    looper6     : 1;
         uint16_t    looper7     : 1;
-        uint16_t    impulse1    : 1;
-        uint16_t    impulse0    : 1;
-        uint16_t    switch1     : 1;
         uint16_t    switch0     : 1;
+        uint16_t    impulse     : 1;
+        uint16_t    switch2     : 1;
+        uint16_t    switch1     : 1;
         uint16_t    looper2     : 1;
         uint16_t    looper3     : 1;
         uint16_t    looper1     : 1;
