@@ -98,6 +98,7 @@ ISR(USART_RXC_vect)
                 enterProgram( data );
                 transmit_com( PROG_CHANGE<<7 | data , 10 );
             }
+            midi_state = IDLE;
             break;
 
         default:
