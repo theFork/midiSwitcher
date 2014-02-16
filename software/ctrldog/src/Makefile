@@ -87,7 +87,7 @@ help:
 	@echo "\tmake allinc = backup, clean, compile, program and eep"
 	@echo "\tmake asm = compile the software and create .asm-file"
 	@echo "\tmake backup = read data from eeprom"
-	@echo "\tmake build = compile the software and create .hex and .asm-files"
+	@echo "\tmake compile = compile the software and create .hex and .asm-files"
 	@echo "\tmake clean = clean up built project files"
 	@echo "\tmake eep = write data to eeprom"
 	@echo "\tmake fuse = write fuse bits"
@@ -151,7 +151,7 @@ makeclean:
 	$(REMOVE) $(OBJ)
 
 # target: build project
-build: hello hex asm bye
+compile: hello hex asm bye
 
 # target: program the device.
 program: hello makeprogram bye
@@ -188,7 +188,7 @@ all: hello makeclean hex makeprogram bye
 allinc: hello makeclean hex makebackup makeprogram makeeep bye
 
 # phony targets.
-.PHONY: all allinc asm backup build bye clean eep fuse hello hex makebackup makeclean makeeep makefuse makeprogram program
+.PHONY: all allinc asm backup compile bye clean eep fuse hello hex makebackup makeclean makeeep makefuse makeprogram program
 
 
 .SECONDARY: $(OBJ)
