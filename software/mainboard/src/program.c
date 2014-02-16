@@ -148,6 +148,12 @@ void toggleChannel(uint8_t number) {
     updateProgram(current_program.number, current_program.data.word);
 }
 
+void toggleMomentarySwitch() {
+    // compute and apply new program data
+    current_program.data.channels.switch0 ^= 1;
+    applyProgramData(current_program.data);
+}
+
 void updateProgram(uint8_t number, uint16_t data)
 {
     eeprom_write_word(&programs[number], data);

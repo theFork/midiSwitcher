@@ -32,7 +32,6 @@
 //---------------- constants ----------------//
 #define     PROGRAM_COUNT               120
 #define     IMPULSE_DURATION_MS         20
-#define     MOMENTARY_SWITCH_CHANNEL    4
 
 
 //---------------- data types ----------------//
@@ -70,6 +69,7 @@ void copyCurrentProgramTo( uint8_t pgm );
 void enterProgram( uint8_t );
 uint16_t readProgram( uint8_t );
 void toggleChannel(uint8_t number);
+void toggleMomentarySwitch( void );
 void updateProgram( uint8_t number, uint16_t config );
 void wipeCurrentProgram( void );
 void wipeCurrentBank( void );

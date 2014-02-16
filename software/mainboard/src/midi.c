@@ -35,7 +35,7 @@
 //                     V A R I A B L E S                      //
 ////////////////////////////////////////////////////////////////
 
-midi_state_t    midi_state;
+midi_state_t        midi_state;
 
 
 
@@ -90,8 +90,7 @@ ISR(USART_RXC_vect)
         case NOTE_OFF:
         case NOTE_ON:
             if (data == CMD_MOMENTARY) {
-                // toggle switch0
-                toggleChannel(MOMENTARY_SWITCH_CHANNEL);
+                toggleMomentarySwitch();
             }
             midi_state = IDLE;
             break;
