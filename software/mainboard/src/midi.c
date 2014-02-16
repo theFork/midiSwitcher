@@ -66,6 +66,9 @@ void configureUSART( void )
 
 ISR(USART_RXC_vect)
 {
+    // disable interrupts
+    cli();
+
     // wait until transmission is complete
     while ( !(UCSRA & 1<<RXC) );
 
@@ -105,4 +108,7 @@ ISR(USART_RXC_vect)
             midi_state = IDLE;
             break;
     }
- }
+
+    // enable interrupts
+    sei();
+}
