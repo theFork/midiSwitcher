@@ -8,10 +8,10 @@
 
 
 // EEPROM variables
-unsigned char nameHead_eemem[12][12] EEMEM;
-unsigned char nameTail_eemem[12][12] EEMEM;
-uint8_t pnum_eemem EEMEM;
 int8_t initpnum_eemem EEMEM;
+uint8_t pnum_eemem EEMEM;
+unsigned char nameTail_eemem[12][12] EEMEM;
+unsigned char nameHead_eemem[12][12] EEMEM;
 
 void configPorts( void )
 {
