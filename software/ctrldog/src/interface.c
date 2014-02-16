@@ -121,7 +121,7 @@ uint8_t loadProgramNumber( void )
 
 int8_t loadInitProgramNumber( void )
 {
-	return eeprom_read_byte( &initpnum_eemem );
+	return eeprom_read_byte( (uint8_t*) &initpnum_eemem );
 }
 
 void storeBank( uint8_t bankNumber )
@@ -137,7 +137,7 @@ void storeBank( uint8_t bankNumber )
 
 void storeInitProgramNumber( int8_t pnum )
 {
-	eeprom_write_byte( &initpnum_eemem, pnum );
+	eeprom_write_byte( (uint8_t*) &initpnum_eemem, pnum );
 }
 
 void wipeBank( void )
