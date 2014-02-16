@@ -26,7 +26,7 @@ enum action_t { NO_ACTION, CTRL_DN_ACTION, CTRL_OK_ACTION, CTRL_UP_ACTION, COM_A
 enum prompt_t { PROGRAM_PROMPT, BANK_PROMPT };
 
 // current program number and name
-volatile struct
+struct
 {
 	uint8_t number;
 	char nameHead[12];
@@ -34,7 +34,7 @@ volatile struct
 } program;
 
 // program state variables
-volatile struct
+struct
 {
 	// encoder state
 	bool siga;
