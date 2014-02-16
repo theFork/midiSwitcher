@@ -110,10 +110,12 @@ void copyProgram( void )
 	}
 }
 
-void enterProgram( uint8_t pnum )
+void enterProgram( uint8_t pnum, bool send_pc )
 {
 	// signal midiSwitcher
-	sendPC( pnum );
+	if (send_pc) {
+		sendPC( pnum );
+	}
 
 	// save previous program
 	state.prev_pnum = loadProgramNumber();
@@ -149,7 +151,7 @@ void execCMD( uint16_t data )
 
 	// execute command
 	if ( cmd == PROG_CHANGE && 0 <= num && num < 119 )
-		enterProgram( num );
+		enterProgram( num, false );
 
 	else if ( cmd == DEBUG_MSG )
 	{
@@ -186,8 +188,8 @@ void init( void )
 	_delay_ms( 4000 );
 
 	// enter previous or default program
-	if (loadInitProgramNumber() > -1) enterProgram( loadInitProgramNumber() );
-	else enterProgram( loadProgramNumber() );
+	if (loadInitProgramNumber() > -1) enterProgram( loadInitProgramNumber(), true );
+	else enterProgram( loadProgramNumber(), true );
 }
 
 void menu( void )
@@ -226,12 +228,12 @@ void menu( void )
 				switch ( item )
 				{
 					case 0: // leave menu
-						enterProgram( program.number );
+						enterProgram( program.number, true );
 						return;
 					case 1: // switch program
 						if ( prompt( "   switch to" , PROGRAM_PROMPT , state.prev_pnum+1 ) )
 						{
-							enterProgram( state.prev_pnum );
+							enterProgram( state.prev_pnum, true );
 							return;
 						}
 						break;
@@ -509,7 +511,7 @@ void selectProgram( void )
 				COUNT_UP
 				break;
 			case CTRL_OK_ACTION:
-				enterProgram( program.number );
+				enterProgram( program.number, true );
 				return;
 			default:
 				continue;

@@ -16,7 +16,7 @@ j7@x
  * @version 0.2.2 (4): 2011-09-04
 */
 
-#include "ctrldog.h" 
+#include "ctrldog.h"
 
 
 int main( void )
@@ -34,12 +34,12 @@ int main( void )
 
 			case CTRL_DN_ACTION:
 				COUNT_DN
-				enterProgram( program.number );
+				enterProgram( program.number, true );
 				break;
 
 			case CTRL_UP_ACTION:
 				COUNT_UP
-				enterProgram( program.number );
+				enterProgram( program.number, true );
 				break;
 
 			case COM_ACTION:

@@ -18,6 +18,8 @@
 
 //---------------- data types and global variables ----------------//
 typedef uint8_t bool;
+#define true    1
+#define false   0
 
 // codes for action()
 enum action_t { NO_ACTION, CTRL_DN_ACTION, CTRL_OK_ACTION, CTRL_UP_ACTION, COM_ACTION };
@@ -89,7 +91,7 @@ struct
 // engine.c
 extern enum action_t action( void );
 extern void copyProgram( void );
-extern void enterProgram( uint8_t );
+extern void enterProgram( uint8_t, bool );
 extern void execCMD( uint16_t );
 extern void init( void );
 extern void menu( void );
